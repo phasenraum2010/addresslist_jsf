@@ -1,10 +1,12 @@
 package org.woehlke.addresslist.web;
 
 import org.woehlke.addresslist.dao.AddressDao;
+import org.woehlke.addresslist.entities.Address;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -22,7 +24,10 @@ public class AddressBean implements Serializable {
     private AddressDao addressDao;
 
     //Todo: Validation
+    @NotNull(message = "Name is mandantory")
     private String name;
+
+    @NotNull(message = "street is mandantory")
     private String street;
     private String houseNumber;
     private String zip;
@@ -68,7 +73,15 @@ public class AddressBean implements Serializable {
         this.city = city;
     }
 
+    //Todo: Validation
     public String save(){
+        Address address = new Address();
+        address.setName(name);
+        address.setStreet(street);
+        address.setHouseNumber(houseNumber);
+        address.setZip(zip);
+        address.setCity(city);
+        addressDao.addNewAddress(address);
         return "hello.xhtml";
     }
 }

@@ -10,6 +10,9 @@
 <h1><h:outputText value="Addresslist"/></h1>
 <h2><h:outputText value="Neue Adresse"/></h2>
 <h:form id="form">
+    <h:panelGroup>
+        <h:messages id="messages" layout="block" errorStyle="color: red"/>
+    </h:panelGroup>
     <h:panelGrid id="grid" columns="2">
         <h:outputLabel value="name:" for="name"/>
         <h:inputText id="name"

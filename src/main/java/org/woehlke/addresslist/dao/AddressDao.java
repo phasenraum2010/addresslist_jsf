@@ -12,5 +12,10 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface AddressDao {
+
     List<Address> getAddressList();
+
+    void delete(long id);
+
+    void addNewAddress(Address address);
 }
