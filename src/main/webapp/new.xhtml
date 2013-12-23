@@ -7,6 +7,29 @@
     <title>Neue Addresse</title>
 </head>
 <body>
-<h:outputText value="Neue Adresse"/>
+<h1><h:outputText value="Addresslist"/></h1>
+<h2><h:outputText value="Neue Adresse"/></h2>
+<h:form id="form">
+    <h:panelGrid id="grid" columns="2">
+        <h:outputLabel value="name:" for="name"/>
+        <h:inputText id="name"
+                     value="#{addressBean.name}"/>
+        <h:outputLabel value="street:" for="street"/>
+        <h:inputText id="street"
+                     value="#{addressBean.street}"/>
+        <h:outputLabel value="houseNumber:" for="houseNumber"/>
+        <h:inputText id="houseNumber"
+                     value="#{addressBean.houseNumber}"/>
+        <h:outputLabel value="zip:" for="zip"/>
+        <h:inputText id="zip"
+                     value="#{addressBean.zip}"/>
+        <h:outputLabel value="city:" for="city"/>
+        <h:inputText id="city"
+                     value="#{addressBean.city}"/>
+    </h:panelGrid>
+    <h:commandButton id="save" value="Save"
+                     action="#{addressBean.save}"/>
+
+</h:form>
 </body>
 </html>
