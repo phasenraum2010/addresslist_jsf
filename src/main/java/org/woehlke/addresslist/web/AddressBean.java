@@ -89,6 +89,12 @@ public class AddressBean implements Serializable {
     }
 
     public String newAdressForm(){
+        this.id=0;
+        this.name=null;
+        this.street=null;
+        this.houseNumber=null;
+        this.zip=null;
+        this.city=null;
         return "new.xhtml";
     }
 
