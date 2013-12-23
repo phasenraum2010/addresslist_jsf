@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Addressen</title>
+</head>
+<body>
+<!--
+    http://jsfatwork.irian.at/book_de/introduction.html
+-->
+<h:outputText value="Adressen"/>
+<h:dataTable value="#{addressBean.addressList}" var="item" border="1" cellpadding="2" cellspacing="0">
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Id"/>
+        </f:facet>
+        <h:outputText value="#{item.id}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Name"/>
+        </f:facet>
+        <h:outputText value="#{item.name}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Strasse"/>
+        </f:facet>
+        <h:outputText value="#{item.street}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Hausnummer"/>
+        </f:facet>
+        <h:outputText value="#{item.houseNumber}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="PLZ"/>
+        </f:facet>
+        <h:outputText value="#{item.zip}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Stadt"/>
+        </f:facet>
+        <h:outputText value="#{item.city}"/>
+    </h:column>
+</h:dataTable>
+<h:form>
+<h:commandLink action="#{addressBean.newAdressForm}">Neue Adresse</h:commandLink>
+</h:form>
+</body>
+</html>
