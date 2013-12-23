@@ -11,7 +11,8 @@
     http://jsfatwork.irian.at/book_de/introduction.html
 -->
 <h:outputText value="Adressen"/>
-<h:dataTable value="#{addressListBean.addressList}" var="item" border="1" cellpadding="2" cellspacing="0">
+<h:form>
+<h:dataTable value="#{addressBean.addressList}" var="item" border="1" cellpadding="2" cellspacing="0">
     <h:column>
         <f:facet name="header">
             <h:outputText value="Id"/>
@@ -48,9 +49,20 @@
         </f:facet>
         <h:outputText value="#{item.city}"/>
     </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Edit"/>
+        </f:facet>
+        <h:commandLink action="#{addressBean.editAdressForm(item.id)}">Edit</h:commandLink>
+    </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Delete"/>
+        </f:facet>
+        <h:commandLink action="#{addressBean.deleteAdress(item.id)}">Delete</h:commandLink>
+    </h:column>
 </h:dataTable>
-<h:form>
-<h:commandLink action="#{addressListBean.newAdressForm}">Neue Adresse</h:commandLink>
+<h:commandLink action="#{addressBean.newAdressForm}">Neue Adresse</h:commandLink>
 </h:form>
 </body>
 </html>

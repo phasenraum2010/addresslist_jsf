@@ -18,4 +18,8 @@ public interface AddressDao {
     void delete(long id);
 
     void addNewAddress(Address address);
+
+    Address findById(long id);
+
+    void update(Address address);
 }

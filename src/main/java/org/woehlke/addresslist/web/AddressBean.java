@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,6 +24,8 @@ public class AddressBean implements Serializable {
     @EJB
     private AddressDao addressDao;
 
+    private long id;
+
     //Todo: Validation
     @NotNull(message = "Name is mandantory")
     private String name;
@@ -32,6 +35,14 @@ public class AddressBean implements Serializable {
     private String houseNumber;
     private String zip;
     private String city;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -73,8 +84,16 @@ public class AddressBean implements Serializable {
         this.city = city;
     }
 
+    public List<Address> getAddressList(){
+        return addressDao.getAddressList();
+    }
+
+    public String newAdressForm(){
+        return "new.xhtml";
+    }
+
     //Todo: Validation
-    public String save(){
+    public String saveNew(){
         Address address = new Address();
         address.setName(name);
         address.setStreet(street);
@@ -82,6 +101,33 @@ public class AddressBean implements Serializable {
         address.setZip(zip);
         address.setCity(city);
         addressDao.addNewAddress(address);
+        return "hello.xhtml";
+    }
+
+    public String editAdressForm(long id){
+        Address address = addressDao.findById(id);
+        this.id=address.getId();
+        this.name=address.getName();
+        this.street=address.getStreet();
+        this.houseNumber=address.getHouseNumber();
+        this.zip=address.getZip();
+        this.city=address.getCity();
+        return "edit.xhtml";
+    }
+
+    public String saveEdited(){
+        Address address = addressDao.findById(this.id);
+        address.setName(name);
+        address.setStreet(street);
+        address.setHouseNumber(houseNumber);
+        address.setZip(zip);
+        address.setCity(city);
+        addressDao.update(address);
+        return "hello.xhtml";
+    }
+
+    public String deleteAdress(long id){
+        addressDao.delete(id);
         return "hello.xhtml";
     }
 }
