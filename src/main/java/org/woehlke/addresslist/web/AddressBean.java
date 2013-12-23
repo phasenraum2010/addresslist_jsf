@@ -1,5 +1,6 @@
 package org.woehlke.addresslist.web;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.woehlke.addresslist.dao.AddressDao;
 import org.woehlke.addresslist.entities.Address;
 
@@ -26,14 +27,24 @@ public class AddressBean implements Serializable {
 
     private long id;
 
-    //Todo: Validation
     @NotNull(message = "Name is mandantory")
+    @NotBlank(message = "Name is mandantory")
     private String name;
 
     @NotNull(message = "street is mandantory")
+    @NotBlank(message = "street is mandantory")
     private String street;
+
+    @NotNull(message = "houseNumber is mandantory")
+    @NotBlank(message = "houseNumber is mandantory")
     private String houseNumber;
+
+    @NotNull(message = "Zip is mandantory")
+    @NotBlank(message = "Zip is mandantory")
     private String zip;
+
+    @NotNull(message = "City is mandantory")
+    @NotBlank(message = "City is mandantory")
     private String city;
 
     public long getId() {
@@ -98,7 +109,6 @@ public class AddressBean implements Serializable {
         return "new.xhtml";
     }
 
-    //Todo: Validation
     public String saveNew(){
         Address address = new Address();
         address.setName(name);
