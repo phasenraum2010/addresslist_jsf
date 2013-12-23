@@ -1,5 +1,8 @@
 package org.woehlke.addresslist.web;
 
+import org.woehlke.addresslist.dao.AddressDao;
+
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
@@ -14,6 +17,9 @@ import java.io.Serializable;
 @ManagedBean
 @SessionScoped
 public class AddressBean implements Serializable {
+
+    @EJB
+    private AddressDao addressDao;
 
     //Todo: Validation
     private String name;
