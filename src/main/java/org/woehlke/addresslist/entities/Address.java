@@ -4,6 +4,11 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,32 +18,40 @@ import javax.validation.constraints.NotNull;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Address {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Address implements Serializable {
 
+    @XmlElement
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @XmlElement
     @NotNull(message = "Name is mandantory")
     @NotBlank(message = "Name is mandantory")
     @Column
     private String name;
 
+    @XmlElement
     @NotNull(message = "street is mandantory")
     @NotBlank(message = "street is mandantory")
     @Column
     private String street;
 
+    @XmlElement
     @NotNull(message = "houseNumber is mandantory")
     @NotBlank(message = "houseNumber is mandantory")
     @Column
     private String houseNumber;
 
+    @XmlElement
     @NotNull(message = "Zip is mandantory")
     @NotBlank(message = "Zip is mandantory")
     @Column
     private String zip;
 
+    @XmlElement
     @NotNull(message = "City is mandantory")
     @NotBlank(message = "City is mandantory")
     @Column
