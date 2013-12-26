@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,14 +28,14 @@ public class AddressServiceFacade {
     @GET
     @Produces("application/json")
     @Path("/")
-    public java.util.List<Address> getAddressList(){
+    public List<Address> getAddressList(){
         return addressDao.getAddressList();
     }
 
     @GET
     @Produces("application/json")
     @Path("/{addressId}")
-    public Address getBookById(@PathParam("addressId") Long id)
+    public Address getAddressById(@PathParam("addressId") Long id)
     {
         return addressDao.findById(id);
     }
