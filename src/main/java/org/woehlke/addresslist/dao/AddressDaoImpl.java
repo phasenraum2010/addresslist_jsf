@@ -5,7 +5,8 @@ import org.woehlke.addresslist.entities.Address;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -18,8 +19,7 @@ import java.util.logging.Logger;
  */
 @Stateless
 public class AddressDaoImpl implements AddressDao {
-
-
+	
     private static Logger log = Logger.getLogger(AddressDaoImpl.class.getName());
 
 
@@ -27,8 +27,7 @@ public class AddressDaoImpl implements AddressDao {
     private EntityManager entityManager;
 
     public List<Address> getAddressList(){
-        Query q = entityManager.createQuery("select a from Address a");
-        @SuppressWarnings("unchecked")
+    	TypedQuery<Address> q = entityManager.createQuery("select a from Address a",Address.class);
         List<Address> list =  q.getResultList();
         return list;
     }
